@@ -52,7 +52,7 @@ function Home() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="#"
+              href="https://www.linkedin.com/in/abhishek-yadav-b46aa61b5/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
