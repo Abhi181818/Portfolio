@@ -6,6 +6,7 @@ function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState('Repositories'); // Tabs state
 
   useEffect(() => {
     fetchGithubProjects();
@@ -53,12 +54,42 @@ function Projects() {
   if (loading) return <div className="pt-20 text-center">Loading projects...</div>;
   if (error) return <div className="pt-20 text-center text-red-500">Error: {error}</div>;
 
+  // Filtering projects based on active tab
+  const filteredProjects = activeTab === 'Live Links' 
+    ? projects.filter((project) => project.homepage) 
+    : projects;
+
   return (
     <div className="min-h-screen pt-20 px-4 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
           My Projects
         </h1>
+        
+        {/* Tabs */}
+        <div className="flex space-x-4 mb-6">
+          <button
+            onClick={() => setActiveTab('Repositories')}
+            className={`px-4 py-2 text-sm font-medium rounded-lg ${
+              activeTab === 'Repositories'
+                ? 'bg-indigo-600 text-white'
+                : 'bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
+            }`}
+          >
+            Repositories
+          </button>
+          <button
+            onClick={() => setActiveTab('Live Links')}
+            className={`px-4 py-2 text-sm font-medium rounded-lg ${
+              activeTab === 'Live Links'
+                ? 'bg-indigo-600 text-white'
+                : 'bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
+            }`}
+          >
+            Live Links
+          </button>
+        </div>
+
         <motion.div
           ref={ref}
           initial="hidden"
@@ -66,7 +97,7 @@ function Projects() {
           variants={staggerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
               variants={cardVariants}
@@ -90,12 +121,12 @@ function Projects() {
                   </span>
                 </div>
                 <a
-                  href={project.html_url}
+                  href={activeTab === 'Live Links' ? project.homepage : project.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-indigo-600 dark:text-indigo-400 hover:underline"
                 >
-                  View Repository →
+                  {activeTab === 'Live Links' ? 'Visit Site →' : 'View Repository →'}
                 </a>
               </div>
             </motion.div>
@@ -107,3 +138,4 @@ function Projects() {
 }
 
 export default Projects;
+  

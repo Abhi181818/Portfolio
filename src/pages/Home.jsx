@@ -1,14 +1,62 @@
 import React from 'react';
-import { Linkedin, Mail, Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { 
+  FaReact, FaJava, FaHtml5, FaCss3Alt, 
+  FaNodeJs, FaGithub, FaLinkedin, FaEnvelope 
+} from 'react-icons/fa';
+import { 
+  SiJavascript, SiTypescript, SiMongodb, 
+  SiNextdotjs, SiTailwindcss, SiFirebase, 
+  SiExpress 
+} from 'react-icons/si';
+import { IoMdDownload } from 'react-icons/io';
+
+// Skill icons mapping
+const SkillIcons = {
+  'JavaScript': SiJavascript,
+  'React': FaReact,
+  'React Native': FaReact,
+  'Java': FaJava,
+  'MongoDB': SiMongodb,
+  'TypeScript': SiTypescript,
+  'Next.js': SiNextdotjs,
+  'Express': SiExpress,
+  'Tailwind CSS': SiTailwindcss,
+  'HTML': FaHtml5,
+  'CSS': FaCss3Alt,
+  'Firebase': SiFirebase
+};
 
 function Home() {
+  const skills = [
+    'JavaScript', 'React', 'React Native', 'Java', 'MongoDB',
+    'TypeScript', 'Next.js', 'Express', 'Tailwind CSS', 'HTML', 'CSS', 'Firebase'
+  ];
+
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      href: 'https://github.com/Abhi181818',
+      label: 'GitHub'
+    },
+    {
+      icon: FaLinkedin,
+      href: 'https://www.linkedin.com/in/abhishek-yadav-b46aa61b5/',
+      label: 'LinkedIn'
+    },
+    {
+      icon: FaEnvelope,
+      href: 'mailto:abhishek.ay050103@gmail.com',
+      label: 'Email'
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 pt-32 pb-16">
         <div className="text-center">
-          {/* Title */}
+          {/* Hero Section */}
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -18,7 +66,6 @@ function Home() {
             Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Abhishek</span> 👋
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -29,47 +76,30 @@ function Home() {
             and solving complex problems with elegant solutions.
           </motion.p>
 
-          {/* Social Icons */}
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex justify-center space-x-4 mb-12"
           >
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://github.com/Abhi181818"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
-              </svg>
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.linkedin.com/in/abhishek-yadav-b46aa61b5/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-            >
-              <Linkedin size={24} />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="mailto:abhishek.ay050103@gmail.com"
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-            >
-              <Mail size={24} />
-            </motion.a>
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <motion.a
+                key={label}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                aria-label={label}
+              >
+                <Icon size={24} />
+              </motion.a>
+            ))}
           </motion.div>
 
-          {/* Buttons */}
+          {/* Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -90,41 +120,95 @@ function Home() {
                 download="Abhishek_Yadav_Resume.pdf"
                 className="px-6 py-3 border-2 border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center"
               >
-                Download CV <Download size={18} className="ml-2" />
+                Download CV <IoMdDownload size={18} className="ml-2" />
               </a>
             </motion.div>
           </motion.div>
-        </div>
 
-        {/* Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-24"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">
-            Tech Stack
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              'JavaScript', 'React', 'React Native', 'Java', 'MongoDB',
-              'TypeScript', 'Next.js', 'Express', 'Tailwind CSS', 'HTML', 'CSS',
-              'Firebase',
-            ].map((skill, index) => (
-              <motion.div
-                key={skill}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center hover:shadow-md transition-shadow"
+          {/* Tech Stack Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-24 relative"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">
+              Tech Stack
+            </h2>
+            
+            {/* Forward Scroll */}
+            <div className="overflow-hidden">
+              <motion.div 
+                className="flex"
+                animate={{
+                  x: ['0%', '-100%'],
+                  transition: {
+                    repeat: Infinity,
+                    duration: 15,
+                    ease: 'linear'
+                  }
+                }}
               >
-                <span className="text-gray-800 dark:text-gray-200">{skill}</span>
+                {[...skills, ...skills].map((skill, index) => {
+                  const SkillIcon = SkillIcons[skill];
+                  return (
+                    <motion.div
+                      key={`${skill}-${index}`}
+                      whileHover={{ scale: 1.1 }}
+                      className="flex-shrink-0 w-48 p-4 m-2 bg-gray-50 dark:bg-gray-800 rounded-lg text-center 
+                        flex flex-col items-center justify-center hover:shadow-lg transition-all"
+                    >
+                      {SkillIcon && (
+                        <SkillIcon 
+                          className="mb-2 text-indigo-600 dark:text-indigo-400" 
+                          size={32} 
+                        />
+                      )}
+                      <span className="text-gray-800 dark:text-gray-200">{skill}</span>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            </div>
+
+            {/* Reverse Scroll */}
+            <motion.div 
+              className="overflow-hidden mt-8"
+            >
+              <motion.div 
+                className="flex"
+                animate={{
+                  x: ['-100%', '0%'],
+                  transition: {
+                    repeat: Infinity,
+                    duration: 15,
+                    ease: 'linear'
+                  }
+                }}
+              >
+                {[...skills, ...skills].map((skill, index) => {
+                  const SkillIcon = SkillIcons[skill];
+                  return (
+                    <motion.div
+                      key={`${skill}-reverse-${index}`}
+                      whileHover={{ scale: 1.1 }}
+                      className="flex-shrink-0 w-48 p-4 m-2 bg-gray-50 dark:bg-gray-800 rounded-lg text-center 
+                        flex flex-col items-center justify-center hover:shadow-lg transition-all"
+                    >
+                      {SkillIcon && (
+                        <SkillIcon 
+                          className="mb-2 text-indigo-600 dark:text-indigo-400" 
+                          size={32} 
+                        />
+                      )}
+                      <span className="text-gray-800 dark:text-gray-200">{skill}</span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
