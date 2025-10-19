@@ -10,8 +10,8 @@ function About() {
         
         <div className="prose dark:prose-invert max-w-none">
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Hi there! I'm a passionate Full Stack Developer with a strong foundation in modern web technologies.
-            I love building user-friendly applications and solving complex problems with clean, efficient code.
+           I’m a dedicated software engineer with a strong focus on building reliable, efficient, and scalable applications. I enjoy turning ideas into practical solutions through clean code, solid architecture, and modern development practices.
+With experience across backend development, APIs, databases, and automation, I’m passionate about learning new technologies, improving performance, and delivering high-quality software that makes an impact.
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">
@@ -20,10 +20,9 @@ function About() {
           <div className="space-y-8">
             {[
               {
-                title: 'Associate Engineer',
+                title: 'Senior Associate Engineer',
                 company: 'Ascendion',
                 period: '2024 - Present',
-                // description: 'Lead development of modern web applications using React and Node.js.'
               },
             ].map((job, index) => (
               <div
