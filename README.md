@@ -18,7 +18,7 @@ With hands-on experience in **Java, Spring Boot, RESTful APIs, and Microservices
 **Languages:** Java, JavaScript, Python  
 **Frameworks:** Spring Boot, React  
 **Databases:** MySQL, Firebase, PostgreSQL  
-**Tools:** Git, GitHub, Jenkins, SonarQube, Postman, Swagger  
+**Tools:** Git, GitHub, Postman, Swagger  
 **Concepts:** REST APIs, Microservices, OOP, Agile, Unit Testing  
 
 ---
